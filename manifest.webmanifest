@@ -1,0 +1,20 @@
+{
+  "name": "Maruwado Mini",
+  "short_name": "Maruwado",
+  "description": "丸窓から眺める月相・月齢と七十二候のミニウィジェット",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#07090f",
+  "theme_color": "#080a10",
+  "lang": "ja",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='96' fill='%2307090f'/%3E%3Ccircle cx='256' cy='256' r='196' fill='%23101524' stroke='%23e6d4a2' stroke-opacity='0.4' stroke-width='10'/%3E%3Ccircle cx='256' cy='256' r='142' fill='none' stroke='%23e6d4a2' stroke-opacity='0.85' stroke-width='8' stroke-dasharray='580 312' transform='rotate(-90 256 256)'/%3E%3Ccircle cx='256' cy='256' r='100' fill='%231b2236'/%3E%3Cpath d='M256 156 A100 100 0 0 1 256 356 A46 100 0 0 0 256 156 Z' fill='%23f4ebd0'/%3E%3C/svg%3E",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

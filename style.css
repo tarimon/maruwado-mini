@@ -1,0 +1,310 @@
+:root {
+  --bg-deep: #07090f;
+  --bg-mid: #0e1320;
+  --window-sky-top: #12192b;
+  --window-sky-mid: #0d1220;
+  --window-sky-bottom: #090c16;
+  --gold-soft: #e6d4a2;
+  --gold-muted: rgba(230, 212, 162, 0.28);
+  --ink-primary: #f2ede1;
+  --ink-secondary: #b9b4a6;
+  --ink-muted: #848c9e;
+  --btn-bg: rgba(255, 255, 255, 0.05);
+  --btn-hover: rgba(230, 212, 162, 0.14);
+  --btn-border: rgba(230, 212, 162, 0.22);
+  --font-serif: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", Georgia, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI", "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: var(--bg-deep);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-image:
+    radial-gradient(circle at 50% 42%, rgba(30, 41, 70, 0.55) 0%, rgba(11, 15, 25, 0.8) 48%, var(--bg-deep) 100%);
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:
+    max(20px, env(safe-area-inset-top))
+    max(16px, env(safe-area-inset-right))
+    max(24px, env(safe-area-inset-bottom))
+    max(16px, env(safe-area-inset-left));
+}
+
+.stage {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(18px, 4vw, 28px);
+}
+
+.app-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  letter-spacing: 0.14em;
+  user-select: none;
+}
+
+.brand-ja {
+  font-family: var(--font-serif);
+  font-size: clamp(0.95rem, 2.8vw, 1.1rem);
+  color: var(--gold-soft);
+  font-weight: 500;
+}
+
+.brand-en {
+  font-size: clamp(0.68rem, 2vw, 0.78rem);
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+/* Round Window (丸窓) */
+.marumado {
+  position: relative;
+  width: min(88vw, 430px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  container-type: inline-size;
+  background: radial-gradient(
+    circle at 50% 34%,
+    var(--window-sky-top) 0%,
+    var(--window-sky-mid) 56%,
+    var(--window-sky-bottom) 100%
+  );
+  box-shadow:
+    0 0 0 1px rgba(230, 212, 162, 0.2),
+    0 0 0 8px rgba(13, 17, 28, 0.92),
+    0 0 0 9.5px rgba(230, 212, 162, 0.14),
+    0 28px 65px rgba(0, 0, 0, 0.72),
+    0 0 90px rgba(217, 197, 142, 0.07),
+    inset 0 18px 42px rgba(0, 0, 0, 0.62),
+    inset 0 -16px 34px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.window-bezel {
+  position: absolute;
+  inset: 2.6%;
+  border-radius: 50%;
+  border: 1px solid rgba(230, 212, 162, 0.12);
+  pointer-events: none;
+}
+
+.window-content {
+  position: relative;
+  z-index: 1;
+  width: 82%;
+  height: 84%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3.5cqi;
+  text-align: center;
+}
+
+.moon-stage {
+  width: 48cqi;
+  height: 48cqi;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.moon-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.sky-stars circle {
+  fill: #e9e2ce;
+}
+
+.illum-ring {
+  transition: stroke-dashoffset 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#moon-halo {
+  transition: opacity 420ms ease;
+}
+
+.info-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.6cqi;
+  max-width: 100%;
+}
+
+.moon-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4cqi;
+  font-size: clamp(0.7rem, 3.2cqi, 0.9rem);
+  color: var(--ink-secondary);
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.moon-age {
+  color: var(--gold-soft);
+  font-weight: 500;
+}
+
+.meta-sep {
+  color: rgba(230, 212, 162, 0.36);
+}
+
+.kou-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9cqi;
+  padding-top: 1.4cqi;
+  border-top: 1px solid rgba(230, 212, 162, 0.14);
+  min-width: 58cqi;
+}
+
+.kou-term {
+  font-size: clamp(0.66rem, 2.8cqi, 0.82rem);
+  color: var(--ink-muted);
+  letter-spacing: 0.1em;
+}
+
+.kou-name {
+  font-family: var(--font-serif);
+  font-size: clamp(1.18rem, 6.2cqi, 1.78rem);
+  font-weight: 500;
+  color: var(--ink-primary);
+  letter-spacing: 0.16em;
+  line-height: 1.25;
+  padding-left: 0.16em;
+}
+
+.kou-reading {
+  font-family: var(--font-serif);
+  font-size: clamp(0.66rem, 2.75cqi, 0.82rem);
+  color: var(--ink-secondary);
+  letter-spacing: 0.08em;
+}
+
+/* Date navigation controls */
+.date-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 4vw, 24px);
+  width: min(88vw, 430px);
+}
+
+.nav-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--ink-primary);
+  font-size: 1.65rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 180ms ease, border-color 180ms ease, transform 140ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-btn:hover {
+  background: var(--btn-hover);
+  border-color: rgba(230, 212, 162, 0.48);
+}
+
+.nav-btn:active {
+  transform: scale(0.94);
+}
+
+.nav-btn:focus-visible,
+.today-btn:focus-visible {
+  outline: 2px solid var(--gold-soft);
+  outline-offset: 3px;
+}
+
+.date-center {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.date-text {
+  font-family: var(--font-serif);
+  font-size: clamp(0.95rem, 3.8vw, 1.15rem);
+  color: var(--ink-primary);
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.today-btn {
+  border: 1px solid rgba(230, 212, 162, 0.24);
+  background: rgba(230, 212, 162, 0.08);
+  color: var(--gold-soft);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  padding: 4px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 180ms ease, border-color 180ms ease;
+}
+
+.today-btn:hover {
+  background: rgba(230, 212, 162, 0.18);
+  border-color: rgba(230, 212, 162, 0.5);
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+  .marumado {
+    width: min(72vh, 360px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .illum-ring,
+  #moon-halo,
+  .nav-btn,
+  .today-btn {
+    transition: none;
+  }
+}
